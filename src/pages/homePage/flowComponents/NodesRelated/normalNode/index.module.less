@@ -1,0 +1,24 @@
+.sfcNormalNodeContainer {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+
+  &.vertical {
+    flex-direction: column;
+
+    .sfcNormalNodeWrap {
+      flex-direction: column;
+    }
+  }
+
+  .sfcNormalNodeWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .sfcNormalNodeContentWrap {
+      position: relative;
+    }
+  }
+}

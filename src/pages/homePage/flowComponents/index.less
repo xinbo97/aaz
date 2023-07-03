@@ -1,0 +1,30 @@
+.sfcContainer {
+  width: 100%;
+  height: 100%;
+  overflow: auto;// 超出显示滚动条
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.03);
+
+  * {
+    box-sizing: border-box;  // 这里涉及到画线，不要用content-box
+  }
+
+  .sfcContent {
+    // 设置垂直居中
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    // 最小宽高设为容器宽高，否则无法居中
+    min-width: 100%;
+    min-height: 100%;
+    // // 否则宽高以实际的内容为准
+    width: max-content;
+    height: max-content;
+
+    &.vertical {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

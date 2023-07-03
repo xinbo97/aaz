@@ -1,0 +1,195 @@
+// 注意兼容水平和垂直
+.sfcConditionNodeContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &.vertical {
+    flex-direction: column;
+
+
+
+    .sfcConditionNodeItemList {
+      display: flex;
+
+      .sfcConditionNodeItem {
+        padding-right: 30px;
+        padding-bottom: 0;
+
+        // 中间的竖线高度100%
+        // add 设置普遍的normalNode盒子顶部的连接线，默认贴顶贴左
+        .sfcConditionNodeItemLine {
+          height: 2px;
+          width: 100%;
+          top: 0;
+          left: 0;
+
+          &.sfcConditionNodeItemLastLine {
+            left: 0;
+            top: 100%;
+          }
+        }
+
+        // 头尾的竖线高度50%
+        // add 第一个nodeItem的线应该靠盒子右侧
+        &:first-of-type {
+          // 头部的竖线距顶部50%
+          > .sfcConditionNodeItemLine {
+            left: 50%;
+            width: 50%;
+            height: 2px;
+            top: 0;
+
+            &.sfcConditionNodeItemLastLine {
+              top: 100%;
+            }
+          }
+        }
+
+        &:last-of-type {
+          // 尾部的竖线距顶部0
+          > .sfcConditionNodeItemLine {
+            left: 0;
+            width: 50%;
+            height: 2px;
+            top: 0;
+
+            &.sfcConditionNodeItemLastLine {
+              top: 100%;
+            }
+          }
+        }
+
+        // 连接竖线和节点的水平线
+        .sfcConditionNodeItemLinkLine {
+          // position: relative;
+          height: 30px;   // 这里的30是定了盒子paddingtop是30
+          width: 2px;
+          top: 0px;
+          left: 50%;
+          transform: translate(-50%,0);
+          // &::before {
+          //   width: 2px;
+          //   height: 100%;
+          //   transform: translateX(-50%);
+          // }
+
+
+          &::after {
+            position: absolute;
+            content: '';
+            left: 50%;
+            bottom: 0;
+            top: auto;
+            border-top: 10px solid #dedede;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: none;
+            transform: translateX(-50%);
+          }
+        }
+
+        .sfcConditionNodeItemNodeWrap {
+          flex-direction: column;
+          height: 100%;
+
+          // 连接较短分支和分支整体右侧的水平线
+          .sfcConditionNodeItemLinkCrossLine {
+            width: 2px;
+          }
+        }
+      }
+    }
+  }
+
+  .sfcConditionAddBtn {
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #dedede;
+    background: #fff;
+    border-radius: 18px;
+    color: #222;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .sfcConditionNodeItemList {
+    .sfcConditionNodeItem {
+      padding: 30px;
+      padding-right: 0;
+      position: relative;
+
+      // 中间的竖线高度100%
+      .sfcConditionNodeItemLine {
+        position: absolute;
+        height: 100%;
+        width: 2px;
+        left: 0px;
+        top: 0;
+        background-color: #dedede;
+
+        &.sfcConditionNodeItemLastLine {
+          left: 100%;
+        }
+      }
+
+      // 头尾的竖线高度50%
+      &:first-of-type {
+        // 头部的竖线距顶部50%
+        > .sfcConditionNodeItemLine {
+          top: 50%;
+          height: 50%;
+        }
+      }
+
+      &:last-of-type {
+        // 尾部的竖线距顶部0
+        > .sfcConditionNodeItemLine {
+          top: 0;
+          height: 50%;
+        }
+      }
+
+      // 连接竖线和节点的水平线
+      .sfcConditionNodeItemLinkLine {
+        position: absolute;
+        width: 30px;
+        height: 2px;
+        left: 0px;
+        top: 50%;
+        transform: translate(0,-50%);
+        background-color: #dedede;
+
+        &::after {
+          right: auto;
+          top: 50%;
+          border-top: 10px solid #dedede;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-bottom: none;
+          transform: translateY(-50%);
+        }
+      }
+
+      .sfcConditionNodeItemNodeWrap {
+        display: flex;
+        align-items: center;
+
+        // 连接较短分支和分支整体右侧的水平线
+        .sfcConditionNodeItemLinkCrossLine {
+          height: 2px;
+          flex-grow: 1;
+          background-color: #dedede;
+        }
+      }
+    }
+  }
+}
